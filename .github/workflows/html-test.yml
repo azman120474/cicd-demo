@@ -1,0 +1,25 @@
+
+name: HTML Project Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-html:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check HTML file
+        run: |
+          test -f index.html
+          echo "HTML file exists!"
+
+      - name: Check welcome message
+        run: |
+          grep -q "Welcome to my GitHub project!" index.html
+          echo "Welcome message found!"
